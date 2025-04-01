@@ -1,0 +1,35 @@
+# Dockerfile para Frontend Next.js
+FROM node:18-alpine AS builder
+
+# Establecer directorio de trabajo
+WORKDIR /app
+
+# Copiar archivos de dependencias
+COPY package*.json ./
+
+# Instalar dependencias
+RUN npm ci
+
+# Copiar código fuente
+COPY . .
+
+# Construir aplicación
+RUN npm run build
+
+# Etapa de producción
+FROM node:18-alpine AS production
+
+WORKDIR /app
+
+# Copiar archivos necesarios de la etapa de construcción
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+# Exponer puerto
+EXPOSE 3000
+
+# Comando para ejecutar la aplicación
+CMD ["node", "server.js"]
+

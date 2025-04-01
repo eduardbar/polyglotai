@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* Paleta profesional y amigable basada en principios de colorimetría */
+:root {
+  --background: #fafafa; /* blanco principal */
+  --foreground: #111111; /* texto principal oscuro */
+  --surface-glass: rgba(255, 255, 255, 0.75); /* vidrio claro */
+  --surface-glass-border: rgba(2, 6, 23, 0.08); /* borde sutil oscuro */
+  --text-secondary: #334155; /* slate-700 para mejor contraste */
+  --accent: #ffffff; /* blanco */
+  --accent-2: #f1f5f9; /* gris-100 */
+  --accent-3: #e5e7eb; /* gris-200 */
+}
+
+/* Mapa de tokens Tailwind v4 */
+@theme inline {
+  --color-background: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-text-secondary: var(--text-secondary);
+  --color-surface-glass-border: var(--surface-glass-border);
+  --color-accent: var(--accent);
+  --color-accent-hover: color-mix(in oklab, var(--accent), white 10%);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Fondo global con degradados radiales + lineal */
+html, body {
+  background:
+    radial-gradient(1000px 500px at 10% -10%, rgba(2,6,23,0.04), transparent 60%),
+    radial-gradient(900px 450px at 90% 0%, rgba(2,6,23,0.03), transparent 60%),
+    linear-gradient(180deg, #ffffff, #f8fafc);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Glassmorphism helpers */
+.glass-surface { 
+  background: var(--surface-glass); 
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--surface-glass-border);
+  border-radius: 12px;
+}
+
+.glass-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+  border-radius: 16px;
+  border: 1px solid var(--surface-glass-border);
+  backdrop-filter: blur(14px) saturate(120%);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 18px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(2,6,23,0.08), rgba(2,6,23,0.04));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events: none;
+}
+
+.glass-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  color: #111111;
+  background: #ffffff;
+  border: 1px solid #e5e7eb; /* gris-200 */
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: all 0.2s ease;
+}
+.glass-input::placeholder { color: #94a3b8; }
+.glass-input:focus { outline: none; border-color: rgba(2,6,23,0.35); box-shadow: 0 0 0 3px rgba(2,6,23,0.08), inset 0 1px 0 rgba(255,255,255,0.5); }
+
+.select-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  color: #111111;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+.select-input:focus { outline: none; border-color: rgba(2,6,23,0.35); box-shadow: 0 0 0 3px rgba(2,6,23,0.08); }
+
+.btn-primary {
+  background: #111111; /* negro sólido */
+  color: #ffffff; /* texto blanco */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.16), 0 2px 6px rgba(2,6,23,0.10);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: 0 12px 28px rgba(2,6,23,0.18), 0 6px 10px rgba(2,6,23,0.12); }
+.btn-primary:disabled { background: #9ca3af; color: #f3f4f6; box-shadow: none; }
+.btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px #ffffff, 0 0 0 6px rgba(17,17,17,0.45); }
+
+/* Shimmer */
+@keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: calc(200px + 100%) 0; } }
+.animate-shimmer { background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%); background-size: 200px 100%; animation: shimmer 1.5s infinite; }
