@@ -73,7 +73,7 @@ class ApiClient {
    * Realiza una traducción
    */
   async translate(
-    request: TranslationRequest,
+    request: any,
     token?: string
   ): Promise<TranslationResponse> {
     const headers: Record<string, string> = {};

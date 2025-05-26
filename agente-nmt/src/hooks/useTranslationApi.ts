@@ -117,18 +117,18 @@ export function useTranslationApi() {
         confidenceScore: null
       }));
 
-      const request: TranslationRequest = {
-        sourceLanguage: state.sourceLanguage,
-        targetLanguage: state.targetLanguage,
+      const request = {
+        source_lang: state.sourceLanguage,
+        target_lang: state.targetLanguage,
         text: cleanedText,
       };
 
-      const response: TranslationResponse = await apiClient.translate(request);
+      const response: any = await apiClient.translate(request);
       
       setState(prev => ({
         ...prev,
-        translatedText: response.translatedText,
-        confidenceScore: response.confidenceScore,
+        translatedText: response.translatedText || response.data?.translatedText || 'Traducción no disponible',
+        confidenceScore: response.confidenceScore || response.data?.confidenceScore || 0,
         isLoading: false,
         error: null,
       }));
