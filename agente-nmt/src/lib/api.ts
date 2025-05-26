@@ -1,6 +1,6 @@
 import { TranslationRequest, TranslationResponse, Language, ApiError } from '@/types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+const API_BASE_URL = '/api'; // Usar API routes de Next.js para Vercel
 
 /**
  * Cliente API para comunicación con el backend

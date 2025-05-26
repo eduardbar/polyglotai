@@ -5,6 +5,7 @@ export const LanguageSchema = z.object({
   id: z.number(),
   code: z.string(),
   name: z.string(),
+  nativeName: z.string(),
   isLowResource: z.boolean().default(true),
 });
 
@@ -76,6 +77,8 @@ export interface LanguageSelectorProps {
   placeholder?: string;
   disabled?: boolean;
   className?: string;
+  isSource?: boolean;
+  showSearch?: boolean;
 }
 
 // Tipos para el área de texto
