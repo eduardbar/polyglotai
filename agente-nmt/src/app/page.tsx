@@ -9,10 +9,10 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-semibold text-text-primary tracking-tight">
-                Agente NMT
+                PolyglotAI
               </h1>
               <p className="text-text-secondary text-sm">
-                Traducción para lenguajes de bajos recursos
+                El políglota digital - Traductor inteligente con IA
               </p>
             </div>
             <div className="text-right">
@@ -34,7 +34,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="text-center">
             <p className="text-text-secondary text-sm">
-              © 2025 Agente NMT - Herramienta de traducción para lenguajes de bajos recursos
+              © 2025 PolyglotAI - El políglota digital que conecta culturas
             </p>
           </div>
         </div>

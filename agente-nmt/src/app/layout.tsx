@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Agente NMT - Traducción para Lenguajes de Bajos Recursos',
-  description: 'Herramienta de traducción de vanguardia impulsada por IA para lenguajes de bajos recursos',
+  title: 'PolyglotAI - El Políglota Digital',
+  description: 'Traductor inteligente con IA para 100+ idiomas. Conecta culturas a través del lenguaje con Google Gemini AI.',
 }
 
 export default function RootLayout({
